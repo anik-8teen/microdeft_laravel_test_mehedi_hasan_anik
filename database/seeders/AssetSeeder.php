@@ -9,16 +9,13 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AssetSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //
+    
 
         Asset::create([
 
-            'name' => 'Hardik',
+            'name' => 'Mouse',
             'status'=>1,
 
         ]);

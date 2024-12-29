@@ -13,7 +13,9 @@ class RController extends Controller
      */
     public function index()
     {
-        //
+        $reqs = Requisition::paginate(10);
+
+        return view('r.show', compact('reqs'));
     }
 
     /**
@@ -21,8 +23,8 @@ class RController extends Controller
      */
     public function create()
     {
-        $assets =Asset::get();
-        return view('r.create',compact('assets'));
+        $assets = Asset::get();
+        return view('r.create', compact('assets'));
     }
 
     /**
@@ -30,13 +32,16 @@ class RController extends Controller
      */
     public function store(Request $request)
     {
-        $validate =$request->validate([
-            'name'=>'required|string|',
-            'email'=>'required|string|',
-            'phone'=>'required|integer|',
-            'asset_id'=>'required|integer|'
-        ]);
 
+
+        // $validate = $request->validate([
+        //     'name' => 'required|string|',
+        //     'email' => 'required|string|',
+        //     'phone' => 'required|string|',
+        //     'asset_id' => 'required'
+        // ]);
+
+        dump($request->all());
         $req = new Requisition();
         $req->name = $request->name;
         $req->email = $request->email;
@@ -44,16 +49,13 @@ class RController extends Controller
         $req->asset_id = $request->asset_id;
         $req->save();
 
-        return redirect()->back()->with('success','Data Created');
+        return redirect()->back()->with('success', 'Data Created');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.

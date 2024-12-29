@@ -7,6 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
  
+Route::get('test/show', [RController::class, 'index'])->name('r.index');
 Route::get('test/create', [RController::class, 'create'])->name('r.create');
 Route::post('test/store', [RController::class, 'store'])->name('r.store');
 

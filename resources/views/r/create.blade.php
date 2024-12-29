@@ -4,8 +4,9 @@
 
     <div class="card-body">
         <form class="form-control" action="{{ route('r.store') }}" method="POST">
+            @csrf
             <label class="form-control" for="name">First name: </label>
-            <input class="form-control" type="text" name="firstname" required>
+            <input class="form-control" type="text" name="name" required>
             <br>
             <label class="form-control" for="phone">Phone: </label>
             <input class="form-control" type="text" name="phone" required>
@@ -14,14 +15,17 @@
             <label for="email">email: </label>
             <input type="email" name="email" required>
             <br>
+            <br>
             <label for="cars">Choose a Asset:</label>
-            @dump($assets)
+            {{-- @dump($assets) --}}
             <select name="asset_id" id="asset">
                 @foreach ($assets as $asset )
                 <option value="{{$asset->id}}">{{$asset->name}}</option>                    
                 @endforeach
 
             </select>
+            <br>
+            <br>
             <label for="designation">Designation: </label>
             <input type="text" name="designation" required>
             <br>
